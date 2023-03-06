@@ -10,10 +10,11 @@ public class GenesisCLI {
     public init(stream: Streams = .default) {
         self.stream = stream
         let generateCommand = GenerateCommand(stream: stream)
+        let templatedGenerateCommand = MultiGenerateCommand(stream: stream)
         cli = CLI(name: "genesis", version: version, description: "genesis templater", commands: [
             generateCommand,
+            templatedGenerateCommand
         ])
-//        cli.router = SingleCommandRouter(command: generateCommand)
     }
 
     public func run(arguments: [String]? = nil) -> Int32 {
